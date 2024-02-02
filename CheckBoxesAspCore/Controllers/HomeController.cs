@@ -13,18 +13,50 @@ namespace CheckBoxesAspCore.Controllers
             _logger = logger;
         }
 
+        //public IActionResult Index()
+        //{
+        //    //initialize object of view model
+        //    //false because first time checkbox unchecked
+        //    var model = new ViewModel() { AcceptTerms = false,Text= "I Accept The Terms" };
+
+        //    return View(model) ;
+        //}
+
         public IActionResult Index()
         {
-            //initialize object of view model
-            //false because first time checkbox unchecked
-            var model = new ViewModel() { AcceptTerms = false,Text= "I Accept The Terms" };
 
-            return View(model) ;
+            var model = new ViewModel()
+            {
+                CheckBoxes = new List<CheckBoxOption>
+                {
+                    new CheckBoxOption()
+                    {
+                        IsChecked = true,
+                        Text = "Cricket",
+                        Value = "Cricket"
+                    },
+                    new CheckBoxOption() 
+                    {
+                        IsChecked = false,
+                        Text= "Football",
+                        Value="Football"
+                    },
+                    new CheckBoxOption() 
+                    {
+                        IsChecked = false,
+                        Text = "Hockey",
+                        Value = "Hockey"
+                    }
+                }
+            };
+
+            return View(model);
         }
+
         [HttpPost]
         public IActionResult Index(ViewModel data)
         {
-            var value = data.AcceptTerms;
+            //var value = data.AcceptTerms;
             return View();
         }
 
