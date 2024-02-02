@@ -15,6 +15,16 @@ namespace CheckBoxesAspCore.Controllers
 
         public IActionResult Index()
         {
+            //initialize object of view model
+            //false because first time checkbox unchecked
+            var model = new ViewModel() { AcceptTerms = false,Text= "I Accept The Terms" };
+
+            return View(model) ;
+        }
+        [HttpPost]
+        public IActionResult Index(ViewModel data)
+        {
+            var value = data.AcceptTerms;
             return View();
         }
 
